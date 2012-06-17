@@ -1,5 +1,11 @@
 CHUCKNORRIS PLUGIN IN DEUTSCH
 
-add "chucknorris" to plugins.conf / füge "chucknorris" in plugins.conf hinzu
+Sag einfach "Chuck Norris" und Siri antwortet mit einem Chuck Norris Spruch.
 
-working fine, getestet funktioniert
+So installierst Du dieses Plugin: 
+
+# 1: Lade den "chucknorris" ordner in ~/SiriServerCore/plugins/ 
+
+# 2: Fügen Sie "chucknorris" in plugins.conf ein
+
+FERTIG
