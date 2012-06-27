@@ -1,39 +1,27 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+#by SullenLook <sullenlook@sullenlook.eu>
 
-# chucknorris.py
-#by SullenLook
+import re
+import urllib2, urllib, uuid
+import json
+from urllib2 import urlopen
+from xml.dom import minidom
 
-from random import randint
 from plugin import *
-import os, random
 
+#Insert your API key from http://chuck-norris-witze.de in the URL below
+APPID = 85031401("chucknorris")
 
+class cnjoke(Plugin):
 
-class chucknorris(Plugin):
-
-    @register("de-DE",".*Chuck norris.*")
-    def st_catfact(self, speech, language):
-        if language == 'de-DE':
-            filename = ./plugins/chucknorris/chucknorris.txt
-            file = open(filename, 'r')
-
-            #Get the total file size
-            file_size = os.stat(filename)[6]
-
-            #Seek to a place int he file which is a random distance away
-            #Mod by the file size so that it wraps around to the beginning
-            file.seek((file.tell()+random.randint(0, file_size-1))%file_size)
-    
-            #Dont use the first readline since it may fall in the middle of a line
-            file.readline()
-
-            #this will return the next (complete) line from the file
-            line = file.readline()
-    
-            #here is the random line
-            self.say(line) 
-             
-        self.complete_request()
-
-
+        @register("de-DE", ".*Chuck Norris*.")
+        def cn_joke(self, speech, language):
+                chuckurl = 'http://chuck-norris-witze.de/api.php?key=%s&o=1' % (APPID)
+                joke = urllib.urlopen(chuckurl)
+                store = joke.read()
+                query = store.replace('Chuck','tschack').replace('&quot;','').replace('roundhouse','raundhaus')
+                store = store.replace('&quot;','\"')
+                self.say(store,query)
+                self.complete_request()
+# EOF
