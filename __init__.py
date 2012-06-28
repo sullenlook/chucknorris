@@ -11,7 +11,7 @@ from xml.dom import minidom
 from plugin import *
 
 #Insert your API key from http://chuck-norris-witze.de in the URL below
-APPID = 85031401("chucknorris")
+APPID = APIKeyForAPI("chucknorris")
 
 class cnjoke(Plugin):
 
